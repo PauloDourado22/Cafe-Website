@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ cafe.name }}</h1>
+
+<img src="{{ cafe.img_url }}" alt="{{ cafe.name }}" style="max-width: 400px">
+
+<p><strong>Location:</strong> {{ cafe.location }}</p>
+<p><strong>Seats:</strong> {{ cafe.seats }}</p>
+<p><strong>Coffee Price:</strong> {{ cafe.coffee_price }}</p>
+
+<a href="{{ cafe.map_url }}" target="_blank">Open in Maps</a>
+{% endblock %}

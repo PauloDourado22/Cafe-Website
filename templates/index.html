@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Cafés</h1>
+
+<div class="cafes-container">
+    {% for cafe in cafes %}
+    <div class="cafe-card">
+        <img src="{{ cafe['img_url'] }}" alt="{{ cafe['name']}}" class="cafe-image">
+        <h2>{{ cafe['name'] }}</h2>
+        <p><strong>Location:</strong> {{ cafe['location'] }}</p>
+        <p><strong>Coffee Price:</strong> {{ cafe['coffee_price'] }}</p>
+        <p><strong>Seats:</strong> {{ cafe['seats'] }}</p>
+
+        <div class="cafe-specs">
+            {% if cafe['has_wifi'] %}
+            <span class="spec">Wifi</span>
+            {% endif %}
+            {% if cafe['has_sockets'] %}
+            <span class="spec">Sockets</span>
+            {% endif %}
+            {% if cafe['has_toilet'] %}
+            <span class="spec">Toilet</span>
+            {% endif %}
+            {% if cafe['can_take_calls'] %}
+            <span class="spec">Calls OK</span>
+            {% endif %}
+        </div>
+
+        <div class="cafe-actions">
+            <a href="{{ url_for('cafe_detail', cafe_id=cafe['id']) }}" class="">View Details</a>
+            <form method="POST" action="{{ url_for('delete_cafe', cafe_id=cafe['id']) }}" style="display: inline;">
+                <button type="submit" class="" onclick="return confirm('Delete café?')">Delete</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<a href="{{ url_for('add_new_cafe') }}" class="">Add New Café</a>
+{% endblock %}

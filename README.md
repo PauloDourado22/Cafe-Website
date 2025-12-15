@@ -1,2 +1,3 @@
 # Cafe-Website
-A simple Flask app for finding cafés with WiFi, power sockets, and decent coffee. Built with Flask, SQLite, and Jinja templates, it lets you browse cafés in a clean card layout, add new ones, and remove existing entries. A small project focused on practicing CRUD, databases, and basic front-end styling with CSS Grid.
+
+A small Flask app to find and manage cafés with WiFi, sockets, and great coffee. Browse cafés in a clean card layout, view details, add new entries, and delete cafés. Built with Flask, SQLite, Jinja templates, and CSS Grid for a responsive design. Perfect for practicing CRUD, databases, and front-end styling.

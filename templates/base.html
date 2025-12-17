@@ -10,9 +10,33 @@
     <nav>
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('add_new_cafe') }}">Add New Café</a>
+        <div class="theme-toggle">
+            <span class="icon">🌙</span>
+            <button id="theme-toggle" aria-label="Toggle dark mode"></button>
+</div>
     </nav>
     <main>
         {% block content %}{% endblock %}
     </main>
+    <script>
+        const toggle = document.getElementById("theme-toggle");
+        const root = document.documentElement;
+        const icon = document.querySelector(".theme-toggle .icon");
+
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+        root.setAttribute("data-theme", savedTheme);
+        icon.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+        }
+
+        toggle.addEventListener("click", () => {
+            const isDark = root.getAttribute("data-theme") === "dark";
+            const newTheme = isDark ? "light" : "dark";
+
+            root.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+            icon.textContent = newTheme === "dark" ? "☀️" : "🌙";
+        });
+    </script>
 </body>
 </html>

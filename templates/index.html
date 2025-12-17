@@ -29,8 +29,8 @@
 
         <div class="cafe-actions">
             <a href="{{ url_for('cafe_detail', cafe_id=cafe['id']) }}" class="">View Details</a>
-            <form method="POST" action="{{ url_for('delete_cafe', cafe_id=cafe['id']) }}" style="display: inline;">
-                <button type="submit" class="" onclick="return confirm('Delete café?')">Delete</button>
+            <form method="POST" action="{{ url_for('delete_cafe', cafe_id=cafe['id']) }}" class="delete-form">
+                <button type="submit" class="delete-btn">Delete</button>
             </form>
         </div>
     </div>

@@ -1,3 +1,25 @@
+:root {
+    --bg: #f5f5f5;
+    --text: #333;
+    --nav-bg: #222;
+    --card-bg: #fff;
+    --border: #e0e0e0;
+    --tag-bg: #eee;
+    --link: #0066cc;
+    --danger: #e74c3c;
+}
+
+[data-theme="dark"] {
+    --bg: #121212;
+    --text: #eaeaea;
+    --nav-bg: #1e1e1e;
+    --card-bg: #1f1f1f;
+    --border: #333;
+    --tag-bg: #2a2a2a;
+    --link: #4da3ff;
+    --danger: #ff6b5c;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,14 +28,16 @@
 
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #f5f5f5;
+    background-color: var(--bg);
     color: #333;
     line-height: 1.6;
+    background-color: var(--bg);
+    color: var(--text);
 }
 
 /* Navigation Bar */
 nav {
-    background-color: #222;
+    background-color: var(--nav-bg);
     padding: 1rem 2rem;
     display: flex;
     gap: 1.5rem;
@@ -29,6 +53,52 @@ nav a:hover {
     text-decoration: underline;
 }
 
+.theme-toggle {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* Toggle track */
+#theme-toggle {
+    width: 44px;
+    height: 24px;
+    background-color: #555;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+/* Toggle knob */
+#theme-toggle::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s ease;
+}
+
+/* Dark mode active */
+[data-theme="dark"] #theme-toggle {
+    background-color: #4da3ff;
+}
+
+[data-theme="dark"] #theme-toggle::before {
+    transform: translateX(20px);
+}
+
+/* Icon */
+.theme-toggle .icon {
+    font-size: 1rem;
+}
+
 /* Main Content */
 main {
     max-width: 1200px;
@@ -42,12 +112,12 @@ h1 {
 
 /* Cafe List */
 .cafe-card {
-    background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
+    background-color: var(--card-bg);
 }
 
 .cafe-image {
@@ -75,7 +145,7 @@ h1 {
 }
 
 .spec {
-    background-color: #eee;
+    background-color: var(--tag-bg);
     border-radius: 999px;
     padding: 0.25rem 0.75rem;
     font-size: 0.75rem;
@@ -88,12 +158,13 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
 }
 
 .cafe-actions a {
     text-decoration: none;
     font-size: 0.9rem;
-    color: #0066cc;
+    color: var(--link);
 }
 
 .cafe-actions a:hover {
@@ -101,17 +172,46 @@ h1 {
 }
 
 .cafe-actions button {
-    background-color: #e74c3c;
-    color: #fff;
+    display: flex;
+    align-items: center;
     border: none;
+    background-color: var(--danger);
+    color: white;
     padding: 0.4rem 0.7rem;
     border-radius: 4px;
-    cursor: pointer;
     font-size: 0.8rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.cafe-actions button:focus {
+    outline: none;
 }
 
 .cafe-actions button:hover {
     background-color: #c0392b;
+}
+
+.cafe-actions form {
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.delete-form {
+    all: unset;
+    display: inline-flex;
+}
+
+.delete-btn {
+    all: unset;
+    background-color: var(--danger);
+    color: white;
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
 }
 
 /* Forms */
@@ -150,4 +250,13 @@ form button {
 
 form button:hover {
     background-color: #000;
+}
+
+#theme-toggle {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
 }
